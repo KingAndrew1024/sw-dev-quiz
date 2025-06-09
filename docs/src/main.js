@@ -155,6 +155,7 @@ const app = Vue.createApp({
         score,
         (score / this.totalQuestions) * 100
       );
+      alert(`Your score is ${(score / this.totalQuestions) * 100}`)
     },
   },
 });
