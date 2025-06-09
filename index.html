@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HCLTECH Interview</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./data.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        HCLTECH LOGO and TEXT
+      </div>
+      <div>Timer: X:XX minutes...</div>
+    </header>
+    <content id="app">
+      <div id="container">
+        <template v-for="(item, item_index) of quiz" :class="item.type">
+          <div
+            :id="'question_'+item_index"
+            v-show="item_index === currentQuestionIndex"
+            class="question-wrapper"
+          >
+            <div class="legend">{{item_index+1}}) <span v-html="item.question"></span></div>
+            <template v-if="item.type === 'radio'">
+              <div
+                v-for="(option, option_index) of item.options"
+                class="answer-option"
+              >
+                <input
+                  type="radio"
+                  :id="'question_'+(item_index)+'_'+option_index"
+                  :data-id="option.id"
+                  :name="'question_'+(item_index)"
+                  @change="hasOptionsSelected = true"
+                />
+                <label :for="'question_'+(item_index)+'_'+option_index">
+                  {{option.text}}
+                </label>
+              </div>
+            </template>
+            <template v-if="item.type === 'check'">
+              <div
+                v-for="(option, option_index) of item.options"
+                class="answer-option"
+              >
+                <input
+                  type="checkbox"
+                  :id="'question_'+(item_index)+'_'+option_index"
+                  :data-id="option.id"
+                  :name="'question_'+(item_index)"
+                  @change="checkboxChanged($event.target.checked)"
+                />
+                <label :for="'question_'+(item_index)+'_'+option_index">
+                  {{option.text}}
+                </label>
+              </div>
+            </template>
+            <template v-if="item.type === 'sort'">
+              <ul class="sortable-list" :id="'question_'+(item_index)">
+                <li
+                  class="sortable-item"
+                  draggable="true"
+                  v-for="(option, option_index) of item.options"
+                  :data-order="option.order"
+                >
+                  {{option.text}}
+                </li>
+              </ul>
+            </template>
+          </div>
+        </template>
+        <div class="next-wrapper">
+          <button @click="next()" :disabled="disableNextButton">NEXT</button>
+        </div>
+      </div>
+    </content>
+    <footer>FOOTER !</footer>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "hcltech-interview",
+  "version": "0.0.1",
+  "description": "HCL software developer interview",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --port 8080  --server --files '**/*.html, **/js/**/*.js, **/style/**/*.css, **/assets/**/*, **/components/*.htm'"
+  },
+  "author": "andres.vegarabahena@hcltech.com",
+  "license": "MIT"
+}
