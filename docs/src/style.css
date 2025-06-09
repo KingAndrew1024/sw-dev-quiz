@@ -37,7 +37,11 @@ footer {
   left: 0;
   position: fixed;
   width: 100%;
-  opacity: 0.5;
+  text-align: center;
+  color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 content {
   margin: 0 auto;
