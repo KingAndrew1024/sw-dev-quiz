@@ -26,7 +26,7 @@ type: "sort", options: [
 //types: radio | check | sort
 
 const QUIZ = [
-  /* {
+  {
     question: 'What is the main reason we use CSS',
     type: 'radio',
     options: [
@@ -74,9 +74,10 @@ const QUIZ = [
       { id: 6, text: 'In place' },
     ],
     selectedOptions: [],
-  }, */
+  },
   {
-    question: 'Which type of CSS holds the highest priority? Sort them in descending order',
+    question:
+      'Which type of CSS holds the highest priority? Sort them in descending order',
     type: 'sort',
     options: [
       { id: 3, text: 'External style', order: 3 },
@@ -109,7 +110,7 @@ const QUIZ = [
     ],
     selectedOptions: [],
   },
-  /* {
+  {
     question:
       'When adding an internal CSS, where you should place your style definitions?',
     type: 'radio',
@@ -179,7 +180,7 @@ const QUIZ = [
   },
   {
     question:
-      'Which option provide a CSS style that will select and style every &lt;p&gt; element that is the first child of its parent?',
+      'Which option provide a CSS style that will select and style every <b>&lt;p&gt;</b> element that is the first child of its parent?',
     type: 'radio',
     options: [
       {
@@ -248,5 +249,5 @@ const QUIZ = [
       { id: 5, text: 'animation-pane' },
     ],
     selectedOptions: [],
-  }, */
+  },
 ];

@@ -180,7 +180,7 @@ const QUIZ = [
   },
   {
     question:
-      'Which option provide a CSS style that will select and style every &lt;p&gt; element that is the first child of its parent?',
+      'Which option provide a CSS style that will select and style every <b>&lt;p&gt;</b> element that is the first child of its parent?',
     type: 'radio',
     options: [
       {

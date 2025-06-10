@@ -99,6 +99,9 @@ h2 {
   width: 70%;
   /* font-family: consolas; */
 }
+.answer-option input {
+  margin-right: 8px;
+}
 
 .sortable-list {
   display: flex;
