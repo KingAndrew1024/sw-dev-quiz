@@ -91,6 +91,7 @@ h2 {
   margin-bottom: 16px;
 }
 .answer-option {
+  display: flex;
   background: #e0e0e0;
   border: 1px solid #c6a6e6;
   border-radius: 8px;
