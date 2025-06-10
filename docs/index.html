@@ -4,26 +4,26 @@
     <meta charset="UTF-8" />
     <title>HCLTECH Interview</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="src/data.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script src="../data.js"></script>
 
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <header>
-      <div>
-        HCLTECH SOFTWARE DEVELOPER INTERVIEW
-      </div>
-      
+      <div><span class="company-name">HCLTECH</span> SOFTWARE DEVELOPER INTERVIEW</div>
     </header>
     <content id="app">
       <div id="container">
         <template v-for="(item, item_index) of quiz" :class="item.type">
           <div
-            :id="'question_'+item_index"
             v-show="item_index === currentQuestionIndex"
             class="question-wrapper"
           >
-            <div class="legend">{{item_index+1}}) <span v-html="item.question"></span></div>
+            <div class="legend">
+              {{item_index+1}}) <span v-html="item.question"></span>
+            </div>
             <template v-if="item.type === 'radio'">
               <div
                 v-for="(option, option_index) of item.options"
@@ -66,7 +66,7 @@
                   v-for="(option, option_index) of item.options"
                   :data-order="option.order"
                 >
-                  {{option.text}}
+                  <img src="../list_icon.svg"> <span>{{option.text}}</span>
                 </li>
               </ul>
             </template>
@@ -77,7 +77,7 @@
         </div>
       </div>
     </content>
-    <footer>Copyright 2025</footer>
-    <script src="./src/main.js"></script>
+    <footer><span class="company-name">HCLTECH</span> <span>&copy;2025</span></footer>
+    <script src="../main.js"></script>
   </body>
 </html>

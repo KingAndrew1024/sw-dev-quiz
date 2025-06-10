@@ -22,6 +22,8 @@ const app = Vue.createApp({
   },
   computed: {
     disableNextButton() {
+      if(this.quizFinished) return true;
+
       if (this.quiz[this.currentQuestionIndex].type === 'sort') {
         return false;
       } else if (this.quiz[this.currentQuestionIndex].type === 'check') {
@@ -39,6 +41,7 @@ const app = Vue.createApp({
       if (this.currentQuestionIndex + 1 < this.totalQuestions) {
         this.currentQuestionIndex++;
       } else {
+        this.quizFinished = true;
         this.calculateScore();
       }
     },
@@ -62,14 +65,14 @@ const app = Vue.createApp({
 
       this.quiz[this.currentQuestionIndex].selectedOptions = [selected];
 
-      console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
-    },
+      //console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
+    },  
     saveCheckboxQuestion() {
       let selected = this.getSelectedItems();
 
       this.quiz[this.currentQuestionIndex].selectedOptions = selected;
 
-      console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
+      //console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
     },
     saveSortQuestion(order) {
       if (!order) {
@@ -85,7 +88,7 @@ const app = Vue.createApp({
 
       this.quiz[this.currentQuestionIndex].selectedOptions = order;
 
-      console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
+      //console.log(this.quiz[this.currentQuestionIndex].selectedOptions);
     },
     getSelectedItems() {
       const question = document.querySelector(
@@ -155,6 +158,12 @@ const app = Vue.createApp({
         score,
         (score / this.totalQuestions) * 100
       );
+      setTimeout(() => {
+        alert(
+          `Your score is ${((score / this.totalQuestions) * 100).toFixed(2)}`
+        );
+      }, 100);
+      
     },
   },
 });
@@ -162,62 +171,9 @@ const app = Vue.createApp({
 app.mount('#app');
 
 function addDraggableCapabilities(id) {
-  const list = document.querySelector(`#${id}.sortable-list`);
-  let draggingItem = null;
-
-  list.addEventListener('dragstart', (e) => {
-    draggingItem = e.target;
-    e.target.classList.add('dragging');
+  $(function () {
+    $(`#${id}`).sortable();
   });
-
-  list.addEventListener('dragend', (e) => {
-    e.target.classList.remove('dragging');
-
-    document
-      .querySelector(`#${id}.sortable-list`)
-      .querySelectorAll('.sortable-item')
-      .forEach((item) => {
-        item.classList.remove('over');
-      });
-
-    draggingItem = null;
-  });
-
-  list.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    const draggingOverItem = getDragAfterElement(list, e.clientY);
-
-    // Remove .over from all items
-    document
-      .querySelectorAll('.sortable-item')
-      .forEach((item) => item.classList.remove('over'));
-
-    if (draggingOverItem) {
-      draggingOverItem.classList.add('over'); // Add .over to the hovered item
-      list.insertBefore(draggingItem, draggingOverItem);
-    } else {
-      list.appendChild(draggingItem); // Append to the end if no item below
-    }
-  });
-
-  function getDragAfterElement(container, y) {
-    const draggableElements = [
-      ...container.querySelectorAll('.sortable-item:not(.dragging)'),
-    ];
-
-    return draggableElements.reduce(
-      (closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closest;
-        }
-      },
-      { offset: Number.NEGATIVE_INFINITY }
-    ).element;
-  }
 }
 
 function shuffleSimpleArray(array) {

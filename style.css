@@ -1,3 +1,7 @@
+@font-face {
+  font-family: consolas;
+  src: url(./fonts/consolas.ttf);
+}
 html,
 body {
   display: flex;
@@ -28,16 +32,24 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
 }
 footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #eee;
   border: 1px solid #666;
   bottom: 0;
-  height: 60px;
   left: 0;
   position: fixed;
+  text-align: center;
+  color: rebeccapurple;
   width: 100%;
-  opacity: 0.5;
+  height: 60px;
+}
+footer .company-name {
+  margin-right: 8px;
 }
 content {
   margin: 0 auto;
@@ -53,15 +65,22 @@ h2 {
   margin-bottom: 20px;
   font-size: 1.8em;
 }
-
+.company-name {
+  color: blue;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 18px;
+}
 .question-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   border-radius: 10px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-size: 20px;
 
   padding: 40px;
   margin: 24px auto;
@@ -72,11 +91,13 @@ h2 {
   margin-bottom: 16px;
 }
 .answer-option {
-  background: #2f0958;
+  background: #e0e0e0;
+  border: 1px solid #c6a6e6;
   border-radius: 8px;
   padding: 8px 20px;
   margin: 8px 0;
   width: 70%;
+  /* font-family: consolas; */
 }
 
 .sortable-list {
@@ -85,24 +106,36 @@ h2 {
   align-items: center;
   justify-content: center;
   list-style: none;
+  padding: 0 20px;
 }
 .sortable-item {
-  background: rgba(255, 255, 255, 0.8);
-  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
+  border: 1px solid #c6a6e6;
   text-align: center;
   color: #333;
-  font-weight: bold;
   cursor: grab;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.2s, transform 0.2s;
-  padding: 15px 20px;
+  padding: 5px 15px;
+  line-height: 1;
   margin: 8px 0;
-  width: 100%;
+  width: 280px;
+  height: 40px;
+}
+.sortable-item img {
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+}
+.sortable-item span {
+  margin: auto;
 }
 .sortable-item:hover {
-  background: #e8f0ff;
-  transform: scale(1.03);
+  /* background: #e8f0ff;
+  transform: scale(1.03); */
 }
 .dragging {
   /* opacity: 0.7; */
