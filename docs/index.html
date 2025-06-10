@@ -6,9 +6,9 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-    <script src="../data.js"></script>
+    <script src="./src/data.js"></script>
 
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
     <header>
@@ -66,7 +66,7 @@
                   v-for="(option, option_index) of item.options"
                   :data-order="option.order"
                 >
-                  <img src="../list_icon.svg"> <span>{{option.text}}</span>
+                  <img src="./src/list_icon.svg"> <span>{{option.text}}</span>
                 </li>
               </ul>
             </template>
@@ -78,6 +78,6 @@
       </div>
     </content>
     <footer><span class="company-name">HCLTECH</span> <span>&copy;2025</span></footer>
-    <script src="../main.js"></script>
+    <script src="./src/main.js"></script>
   </body>
 </html>
